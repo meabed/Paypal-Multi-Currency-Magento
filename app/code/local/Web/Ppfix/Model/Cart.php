@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: meabed
- * Date: 11/16/12
- * Time: 1:28 AM
- * To change this template use File | Settings | File Templates.
- */
-class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart {
+
+class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart
+{
     /**
      * Add a line item
      *
@@ -21,8 +16,8 @@ class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart {
         $this->_shouldRender = true;
         $amount = Mage::helper('ppfix')->getExchangeRate($amount);
         $item = new Varien_Object(array(
-            'name'   => $name,
-            'qty'    => $qty,
+            'name' => $name,
+            'qty' => $qty,
             'amount' => (float)$amount,
         ));
         if ($identifier) {
@@ -31,6 +26,7 @@ class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart {
         $this->_items[] = $item;
         return $item;
     }
+
     /**
      * Check the line items and totals according to PayPal business logic limitations
      */
@@ -70,11 +66,11 @@ class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart {
         }
         $this->_areItemsValid = $this->_areItemsValid && $this->_areTotalsValid;
     }
+
     protected function _render()
     {
         parent::_render();
-        foreach($this->_totals as $key => $value)
-        {
+        foreach ($this->_totals as $key => $value) {
             $this->_totals[$key] = Mage::helper('ppfix')->getExchangeRate($this->_totals[$key]);
         }
     }

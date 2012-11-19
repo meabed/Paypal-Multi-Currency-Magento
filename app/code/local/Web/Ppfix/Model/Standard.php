@@ -1,14 +1,16 @@
 <?php
-class Web_Ppfix_Model_Standard extends Mage_Paypal_Model_Standard {
+class Web_Ppfix_Model_Standard extends Mage_Paypal_Model_Standard
+{
 
     public function canUseForCurrency($currencyCode)
     {
         $result = $this->getConfig()->isCurrencyCodeSupported($currencyCode);
-        if($result == false){
-            $result = strpos(Mage::helper('ppfix')->getConfig('extra_currencies'),Mage::app()->getStore()-> getCurrentCurrencyCode());
+        if ($result == false) {
+            $result = strpos(Mage::helper('ppfix')->getConfig('extra_currencies'), Mage::app()->getStore()->getCurrentCurrencyCode());
         }
         return $result;
     }
+
     /**
      * Return form field array
      *
@@ -39,13 +41,13 @@ class Web_Ppfix_Model_Standard extends Mage_Paypal_Model_Standard {
 
         // add cart totals and line items
         $api->setPaypalCart(Mage::getModel('paypal/cart', array($order)))
-            ->setIsLineItemsEnabled($this->_config->lineItemsEnabled)
-        ;
+            ->setIsLineItemsEnabled($this->_config->lineItemsEnabled);
         $api->setCartSummary($this->_getAggregatedCartSummary());
         $api->setLocale($api->getLocaleCode());
         $result = $api->getStandardCheckoutRequest();
         return $result;
     }
+
     private function _getAggregatedCartSummary()
     {
         if ($this->_config->lineItemsSummary) {
