@@ -22,6 +22,11 @@
             <ppfix>
                 <class>Web_Ppfix_Block</class>
             </ppfix>
+            <checkout>
+                <rewrite>
+                    <cart_totals>Web_Ppfix_Block_Checkout_Cart_Totals</cart_totals>
+                </rewrite>
+            </checkout>
         </blocks>
         <helpers>
             <ppfix>

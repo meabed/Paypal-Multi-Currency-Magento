@@ -67,7 +67,7 @@ class Web_Ppfix_Helper_Data extends Mage_Core_Helper_Abstract
             $current = Mage::app()->getStore()->getCurrentCurrencyCode();
             $to = self::getToCurrency();
             $rate = Mage::getModel('directory/currency')->getCurrencyRates($current, $to);
-            var_dump($rate);
+            //var_dump($rate);
             if (!empty($rate[$to])) {
                 $rate = $rate[$to];
             } else {
