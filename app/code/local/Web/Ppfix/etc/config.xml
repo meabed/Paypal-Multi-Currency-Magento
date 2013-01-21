@@ -40,9 +40,27 @@
                 </setup>
             </ppfix_setup>
         </resources>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <pbfix_sales_order_observer_payment>
+                        <class>Web_Ppfix_Model_Observer</class>
+                        <method>setPaymentInfo</method>
+                    </pbfix_sales_order_observer_payment>
+                </observers>
+            </sales_order_save_after>
+        </events>
     </global>
     <adminhtml>
         <events>
+            <payment_info_block_prepare_specific_information>
+                <observers>
+                    <ppfix_payment_info>
+                        <class>Web_Ppfix_Model_Observer</class>
+                        <method>getPaymentInfo</method>
+                    </ppfix_payment_info>
+                </observers>
+            </payment_info_block_prepare_specific_information>
             <adminhtml_init_system_config>
                 <observers>
                     <ppfix>
@@ -51,6 +69,7 @@
                     </ppfix>
                 </observers>
             </adminhtml_init_system_config>
+
         </events>
     </adminhtml>
 </config>

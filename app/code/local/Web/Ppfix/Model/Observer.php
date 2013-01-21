@@ -11,4 +11,32 @@ class Web_Ppfix_Model_Observer
         }
 
     }
+    public function setPaymentInfo(Varien_Event_Observer $observer)
+    {
+        $order = $observer->getOrder();
+        $payment = $order->getPayment();
+        $code = $payment->getMethod();
+        if (in_array($code, array('paypal_standard'))) {
+            $payment->setAdditionalInformation('payment_currency',Mage::helper('ppfix')->getToCurrency());
+            $payment->setAdditionalInformation('due_amount',Mage::helper('ppfix')->convertAmount($order->getGrandTotal()));
+            $payment->setAdditionalInformation('exchange_rate',Mage::helper('ppfix')->getCurrentExchangeRate());
+        }
+        $payment->save();
+    }
+    public function getPaymentInfo(Varien_Event_Observer $observer)
+    {
+        $transport = $observer->getTransport();
+        $payment = $observer->getPayment();
+        $transport['Payment Currency']=$payment->getAdditionalInformation('payment_currency');
+        $transport['Amount Due']=$payment->getAdditionalInformation('due_amount');
+        $transport['Exchange Rate']=$payment->getAdditionalInformation('exchange_rate');
+        return ;
+        $payment = $order->getPayment();
+        $code = $payment->getMethodInstance()->getCode();
+
+        if (in_array($code, array('paypal_standard'))) {
+            $payment->setAdditionalInformation('acceptance', $params['ACCEPTANCE']);
+        }
+        $payment->save();
+    }
 }
