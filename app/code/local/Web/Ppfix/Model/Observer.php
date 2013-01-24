@@ -27,16 +27,20 @@ class Web_Ppfix_Model_Observer
     {
         $transport = $observer->getTransport();
         $payment = $observer->getPayment();
-        $transport['Payment Currency']=$payment->getAdditionalInformation('payment_currency');
-        $transport['Amount Due']=$payment->getAdditionalInformation('due_amount');
-        $transport['Exchange Rate']=$payment->getAdditionalInformation('exchange_rate');
-        return ;
-        $payment = $order->getPayment();
-        $code = $payment->getMethodInstance()->getCode();
-
-        if (in_array($code, array('paypal_standard'))) {
-            $payment->setAdditionalInformation('acceptance', $params['ACCEPTANCE']);
+        if($payment->getAdditionalInformation('payment_currency'))
+        {
+            $transport['Payment Currency']=$payment->getAdditionalInformation('payment_currency');
         }
-        $payment->save();
+        if($payment->getAdditionalInformation('due_amount'))
+        {
+            $transport['Amount Due']=$payment->getAdditionalInformation('due_amount');
+
+        }
+        if($payment->getAdditionalInformation('exchange_rate'))
+        {
+            $transport['Exchange Rate']=$payment->getAdditionalInformation('exchange_rate');
+
+        }
+        return ;
     }
 }
