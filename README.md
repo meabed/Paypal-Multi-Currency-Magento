@@ -17,6 +17,10 @@ Feel free to contact me <a href="http://www.meabed.net">Meabed.net</a> for inqui
 
 ![Paypal payment method in Checkout page](http://i.imgur.com/LMcHwJw.png)
 
+####View Order in Adminpanel [ Payment block ]
+
+![View Order in Adminpanel](http://i.imgur.com/O98IUHa.png)
+
 ####Base currency configuration 
 
 ![Base currency configuration](http://i.imgur.com/pCdRHWB.png)
