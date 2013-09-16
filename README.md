@@ -9,4 +9,19 @@ After Installation go to System -> Configuration -> Payment Methods -> Paypal Mu
 
 And configure the module on your choice !
 
-Feel free to contact me for inquireies,issues and feedback
+Feel free to contact me <a href="http://www.meabed.net">Meabed.net</a> for inquiries,issues and feedback
+
+### Screen Shots
+
+####Paypal payment method in Checkout page
+
+![Paypal payment method in Checkout page](http://i.imgur.com/LMcHwJw.png)
+
+####Base currency configuration 
+
+![Base currency configuration](http://i.imgur.com/pCdRHWB.png)
+
+####Paypal payment method configuration 
+
+![Paypal payment method configuration](http://i.imgur.com/KG6QLTy.png)
+
