@@ -1,4 +1,5 @@
 <?php
+
 class Web_Ppfix_Model_Source_Currency extends Mage_Adminhtml_Model_System_Config_Source_Currency
 {
     protected $_options;

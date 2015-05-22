@@ -6,6 +6,7 @@ class Web_Ppfix_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::app()->getStore()->getBaseCurrencyCode();
     }
+
     public function getCurrencyArray()
     {
         return explode(',', self::getConfig('extra_currencies'));
@@ -19,7 +20,8 @@ class Web_Ppfix_Helper_Data extends Mage_Core_Helper_Abstract
 
     public static function shouldConvert()
     {
-         return self::isActive() && !in_array(Mage::app()->getStore()->getCurrentCurrencyCode(), self::getSupportedCurrency()) && !in_array(self::getBaseCurrency(),self::getSupportedCurrency());
+        //return self::isActive() && !in_array(Mage::app()->getStore()->getCurrentCurrencyCode(), self::getSupportedCurrency()) && !in_array(self::getBaseCurrency(),self::getSupportedCurrency());
+        return self::isActive() && !in_array(self::getBaseCurrency(), self::getSupportedCurrency());
     }
 
     public static function getConfig($name = '')
@@ -38,6 +40,7 @@ class Web_Ppfix_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return $to;
     }
+
     public function getCurrentExchangeRate()
     {
         $auto = self::getConfig('auto_rate');
@@ -83,8 +86,10 @@ class Web_Ppfix_Helper_Data extends Mage_Core_Helper_Abstract
         $auto = self::getConfig('auto_rate');
         if ($auto) {
             $current = Mage::app()->getStore()->getCurrentCurrencyCode();
+            $base = Mage::app()->getStore()->getBaseCurrencyCode();
             $to = self::getToCurrency();
-            $rate = Mage::getModel('directory/currency')->getCurrencyRates($current, $to);
+            //$rate = Mage::getModel('directory/currency')->getCurrencyRates($current, $to);
+            $rate = Mage::getModel('directory/currency')->getCurrencyRates($base, $to);
             //var_dump($rate);
             if (!empty($rate[$to])) {
                 $rate = $rate[$to];

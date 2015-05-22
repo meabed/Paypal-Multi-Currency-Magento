@@ -17,6 +17,11 @@
                     <config>Web_Ppfix_Model_Config</config>
                 </rewrite>
             </paypal>
+            <sales>
+                <rewrite>
+                    <order_payment>Web_Ppfix_Model_Payment</order_payment>
+                </rewrite>
+            </sales>
         </models>
         <blocks>
             <ppfix>

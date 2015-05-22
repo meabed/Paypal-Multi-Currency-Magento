@@ -5,10 +5,10 @@ class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart
     /**
      * Add a line item
      *
-     * @param string $name
+     * @param string  $name
      * @param numeric $qty
-     * @param float $amount
-     * @param string $identifier
+     * @param float   $amount
+     * @param string  $identifier
      * @return Varien_Object
      */
     public function addItem($name, $qty, $amount, $identifier = null)
@@ -16,8 +16,8 @@ class Web_Ppfix_Model_Cart extends Mage_Paypal_Model_Cart
         $this->_shouldRender = true;
         $amount = Mage::helper('ppfix')->getExchangeRate($amount);
         $item = new Varien_Object(array(
-            'name' => $name,
-            'qty' => $qty,
+            'name'   => $name,
+            'qty'    => $qty,
             'amount' => (float)$amount,
         ));
         if ($identifier) {

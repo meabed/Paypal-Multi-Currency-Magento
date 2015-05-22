@@ -1,4 +1,5 @@
 <?php
+
 class Web_Ppfix_Model_Standard extends Mage_Paypal_Model_Standard
 {
 
@@ -24,7 +25,7 @@ class Web_Ppfix_Model_Standard extends Mage_Paypal_Model_Standard
         $api = Mage::getModel('paypal/api_standard')->setConfigObject($this->getConfig());
         $api->setOrderId($orderIncrementId)
             ->setCurrencyCode(Mage::helper('ppfix')->getToCurrency())
-        //->setPaymentAction()
+            //->setPaymentAction()
             ->setOrder($order)
             ->setNotifyUrl(Mage::getUrl('paypal/ipn/'))
             ->setReturnUrl(Mage::getUrl('paypal/standard/success'))
